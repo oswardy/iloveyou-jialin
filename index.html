@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我愛你 嘉霖</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #ff3366;
+            animation: heartbeat 1.5s infinite;
+        }
+        p {
+            font-size: 1.5rem;
+            color: #444;
+            margin-top: 1rem;
+        }
+        .photo {
+            max-width: 300px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            margin-top: 1.5rem;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.05); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        .typing {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #ff3366;
+            width: 0;
+            animation: typing 4s steps(40, end) forwards;
+        }
+        audio {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="typing">我愛你，嘉霖 💖</h1>
+    <p>這是一個屬於我們的網頁</p>
+    <img src="jialin-photo.jpg" alt="Jialin and You" class="photo" />
+    <audio controls autoplay loop>
+        <source src="light-of-sanctuary.mp3" type="audio/mpeg">
+        您的瀏覽器不支援音樂播放。
+    </audio>
+</body>
+</html>
