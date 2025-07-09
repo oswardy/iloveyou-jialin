@@ -17,11 +17,11 @@
             justify-content: center;
             height: 100vh;
             text-align: center;
-            padding: 20px; /* Added padding for mobile spacing */
-            box-sizing: border-box; /* Include padding in width/height calculations */
+            padding: 20px;
+            box-sizing: border-box;
         }
         h1 {
-            font-size: 2.5rem; /* Adjusted size for mobile */
+            font-size: 2.5rem; 
             color: #ff66b2;
             margin-bottom: 1rem;
             animation: pulse 2s infinite;
@@ -32,9 +32,9 @@
             overflow: hidden;
             width: 0;
             animation: typing 4s steps(40, end) forwards;
-            font-size: 1.25rem; /* Adjusted for mobile */
+            font-size: 1.25rem;
             color: #ffe4e1;
-            margin-bottom: 1rem; /* Added space below typing text */
+            margin-bottom: 1rem;
         }
         @keyframes pulse {
             0% { transform: scale(1); }
@@ -46,66 +46,85 @@
             to { width: 100%; }
         }
         .photo {
-            max-width: 100%; /* Make image responsive */
-            height: auto; /* Maintain aspect ratio */
+            max-width: 200px; /* Adjust as necessary */
+            height: auto;
             border-radius: 20px;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
             margin-top: 20px;
+            transition: opacity 0.5s ease; /* Smooth transition */
         }
         audio {
             margin-top: 20px;
             display: none; /* Hide the audio element */
         }
-        .stars {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: transparent url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNG5oMmdxM2Z5ZXVvejRneDEwdHhmMG0zYmw3YTN2Nm9kZHhibXEybiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MViYNpI0wx69zX7j7w/giphy.gif') repeat;
-            background-size: cover;
-            opacity: 0.2;
-            pointer-events: none;
-        }
-        /* Optional styling to make the button look nicer */
         #playButton {
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #4CAF50;
+            background-color: #FFB6C1; /* Soft Pink */
             color: white;
             border: none;
             cursor: pointer;
             margin-top: 20px;
-            border-radius: 5px; /* Add some corner rounding */
-            width: 100%; /* Make button full-width for better accessibility */
-            max-width: 300px; /* Keep a max width for larger screens */
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
         }
         #playButton:hover {
-            background-color: #45a049;
+            background-color: #FF69B4; /* Darker Pink on hover */
         }
     </style>
 </head>
 <body>
-    <div class="stars"></div>
     <h1>我愛你 嘉霖 💖</h1>
     <div class="typing">正在連接到嘉霖的心跳頻率中 . . .</div>
-    <img src="jialin-photo.jpg" alt="Jialin" class="photo" />
+    <button id="playButton">點擊開啓</button>
+    <!-- Image Element -->
+    <img id="slideshowImage" src="jialin-photo.jpg" alt="Slideshow" class="photo" />
     <audio id="myAudio" loop>
-        <source src="light-of-sanctuary.mp3" type="audio/mpeg">
+        <source src="Dawns.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <button id="playButton">Click to play music</button>
     <script>
         const audio = document.getElementById('myAudio');
         const playButton = document.getElementById('playButton');
+        const slideshowImage = document.getElementById('slideshowImage');
+        
+        // Array of image sources
+        const images = [
+            'jialin-photo.jpg', 
+            'jialin-photo1.jpg', 
+            'jialin-photo2.jpg', 
+            'jialin-photo3.jpg', 
+            'jialin-photo4.jpg'
+        ]; // Make sure these filenames are correct
+        let currentImageIndex = 0;
+        let slideshowInterval; // Declare the interval variable
+
         // Function to toggle play and pause
         playButton.onclick = function() {
             if (audio.paused) {
                 audio.play();  // Play the audio
-                playButton.textContent = 'Click to pause music'; // Change button text
+                playButton.textContent = '點擊暫停'; // Change button text
+                // Start the slideshow
+                startSlideshow();
             } else {
                 audio.pause(); // Pause the audio
-                playButton.textContent = 'Click to play music'; // Change button text back
+                playButton.textContent = '點擊開啓'; // Change button text back
+                stopSlideshow(); // Stop the slideshow
             }
         };
+
+        function startSlideshow() {
+            // Change the image every 3 seconds (3000 milliseconds)
+            slideshowInterval = setInterval(() => {
+                currentImageIndex = (currentImageIndex + 1) % images.length; // Loop through images
+                slideshowImage.src = images[currentImageIndex]; // Update the image source
+            }, 5000);
+        }
+
+        function stopSlideshow() {
+            clearInterval(slideshowInterval); // Clear the interval
+        }
     </script>
 </body>
 </html>
