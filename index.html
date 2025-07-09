@@ -102,7 +102,9 @@
             'jialin-photo6.jpg', 
             'jialin-photo7.jpg',  
             'jialin-photo9.jpg',
+	    'jialin-photo13.jpg',
             'jialin-photo11.jpg',
+            'jialin-photo14.jpg',
             'jialin-photo12.jpg'
         ]; // Make sure these filenames are correct
         let currentImageIndex = 0;
@@ -123,11 +125,10 @@
         };
 
         function startSlideshow() {
-            // Change the image every 3 seconds (3000 milliseconds)
             slideshowInterval = setInterval(() => {
                 currentImageIndex = (currentImageIndex + 1) % images.length; // Loop through images
                 slideshowImage.src = images[currentImageIndex]; // Update the image source
-            }, 5000);
+            }, 4740);
         }
 
         function stopSlideshow() {
